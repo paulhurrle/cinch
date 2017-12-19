@@ -10,6 +10,16 @@ class Api::ItemsController < ApiController
         end
     end
 
+    def destroy
+        begin
+            item = Item.find(params[:id])
+            item.destroy
+            render json: { message: "Item deleted" }, status: :no_content
+        rescue ActiveRecord::RecordNotFound
+            render :json => { message: "Item not found" }, :status => :not_found
+        end
+    end
+
     private
 
     def item_params
