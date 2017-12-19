@@ -22,6 +22,7 @@ users = User.all
 
 10.times do
     List.create!(
+        name: RandomData.random_word,
         user_id: users.sample.id,
     )
 end
