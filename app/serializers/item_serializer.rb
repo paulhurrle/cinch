@@ -1,3 +1,7 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id
+    attributes :id, :item
+
+    def item
+        "#{object.description}"
+    end
 end
